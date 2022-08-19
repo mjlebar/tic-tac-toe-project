@@ -1,0 +1,28 @@
+body {
+  display: grid;
+  justify-content: center;
+}
+
+.board {
+  display: grid;
+  grid-template-columns: repeat(3, 100px);
+  grid-template-rows: repeat(3, 100px);
+  margin: 0px;
+  gap: 5px;
+  background-color: black;
+  padding: 0px;
+  width: 310px;
+}
+
+.spot {
+  /* border: 1px solid black; */
+  background-color: white;
+  font-size: 6rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.yellow {
+  background-color: yellow;
+}
