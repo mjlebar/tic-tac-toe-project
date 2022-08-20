@@ -1,8 +1,8 @@
-const announce = document.querySelector(".announce"); //place where winner will be declared
+const announce = document.querySelector(".announce"); //Top line of the document - basically signals what the current situation of the page is
 const submit = document.querySelector(".submit");
-//HTML elements I want to be globally accessible
 const newgame = document.querySelector(".new-game");
 const names = document.querySelectorAll(".name");
+//HTML elements I want to be globally accessible because they are modified frequently
 
 const gameBoard = (() => {
   const board = []; //tracks what has been marked where
@@ -24,18 +24,22 @@ const playerFactory = function (number, name) {
 
 const gamePlay = (() => {
   let player1, player2, currentPlayer, gameEnded;
+  //variables that need to be declared initially so they can be accessed throughout many different functions
   spots = document.querySelectorAll(".spot");
 
   function clearGame() {
     player1 = undefined;
     player2 = undefined;
     currentPlayer = undefined;
-    gameEnded = true;
-    spots.forEach((spot) => (spot.textContent = ""));
+    gameEnded = true; //resets playing variables
+
+    spots.forEach((spot) => (spot.textContent = "")); //empties board
+
     announce.textContent = "Enter player names to begin!";
+
     names.forEach((name) => name.classList.remove("hidden"));
     submit.classList.remove("hidden");
-    newgame.classList.add("hidden");
+    newgame.classList.add("hidden"); //Makes appropriate buttons visible or invisible
   }
 
   function startGame() {
@@ -44,12 +48,16 @@ const gamePlay = (() => {
     gameEnded = false;
     player1 = playerFactory(0, name1.value);
     player2 = playerFactory(1, name2.value);
-    currentPlayer = player1;
+    currentPlayer = player1; //Initializes player values
+
     name1.value = ""; //clears the submission form
     name2.value = "";
+
     names.forEach((name) => name.classList.add("hidden"));
-    submit.classList.add("hidden");
+    submit.classList.add("hidden"); //Hides input form
+
     announce.textContent = `${currentPlayer.name}'s turn!`;
+
     document.querySelector(".new-game").classList.remove("hidden");
   }
 
@@ -61,7 +69,7 @@ const gamePlay = (() => {
       currentPlayer = player1;
     }
     announce.textContent = `${currentPlayer.name}'s turn!`;
-  } //Switches player and changes name to match
+  } //Switches player and changes name to match while game is still running
 
   function checkBoard() {
     // console.log(`${currentPlayer}`);
@@ -109,7 +117,7 @@ const gamePlay = (() => {
     checkBoard();
     switchPlayer();
     //switches players only if the game does not continue
-  }; //Adds appropriate player's mark to the appropriate spot
+  }; //Adds appropriate player's mark to the appropriate spot, as long as game is not over
 
   spots.forEach((spot) => spot.addEventListener("click", addMark));
   return { startGame, clearGame };
