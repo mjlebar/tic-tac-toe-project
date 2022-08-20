@@ -2,6 +2,7 @@ const announce = document.querySelector(".announce"); //place where winner will 
 const submit = document.querySelector(".submit");
 //HTML elements I want to be globally accessible
 const newgame = document.querySelector(".new-game");
+const names = document.querySelectorAll(".name");
 
 const gameBoard = (() => {
   const board = []; //tracks what has been marked where
@@ -32,6 +33,9 @@ const gamePlay = (() => {
     gameEnded = true;
     spots.forEach((spot) => (spot.textContent = ""));
     announce.textContent = "Enter player names to begin!";
+    names.forEach((name) => name.classList.remove("hidden"));
+    submit.classList.remove("hidden");
+    newgame.classList.add("hidden");
   }
 
   function startGame() {
@@ -43,7 +47,10 @@ const gamePlay = (() => {
     currentPlayer = player1;
     name1.value = ""; //clears the submission form
     name2.value = "";
+    names.forEach((name) => name.classList.add("hidden"));
+    submit.classList.add("hidden");
     announce.textContent = `${currentPlayer.name}'s turn!`;
+    document.querySelector(".new-game").classList.remove("hidden");
   }
 
   function switchPlayer() {
@@ -69,7 +76,7 @@ const gamePlay = (() => {
       for (let i = 0; i < gameBoard.board.length; i++) {
         if (!gameBoard.board[i]) return false;
       } //checks to make sure board is fully filled in. this was surprisingly hard to get to work
-      gameEnded = true;
+      return true;
     }
 
     if (rowWin || columnWin || diagWin) {

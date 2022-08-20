@@ -1,6 +1,13 @@
 body {
   display: grid;
   justify-content: center;
+  justify-items: center;
+  gap: 25px;
+}
+
+.announce {
+  font-size: large;
+  font-weight: 700;
 }
 
 .board {
@@ -23,6 +30,25 @@ body {
   justify-content: center;
 }
 
-.yellow {
-  background-color: yellow;
+.hidden {
+  display: none;
+}
+
+.info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+
+.names {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+
+button {
+  flex: 0;
+  width: 100px;
 }
