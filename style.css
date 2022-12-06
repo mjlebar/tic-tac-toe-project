@@ -30,7 +30,8 @@ body {
   justify-content: center;
 }
 
-.hidden {
+.hidden,
+.hidden * {
   display: none;
 }
 
