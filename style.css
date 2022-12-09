@@ -4,11 +4,13 @@ body {
   justify-items: center;
   gap: 25px;
 }
+/* creates overall alignment of page */
 
 .announce {
   font-size: large;
   font-weight: 700;
 }
+/* formats the font used to announce the state fo the game to the player */
 
 .board {
   display: grid;
@@ -20,27 +22,30 @@ body {
   padding: 0px;
   width: 310px;
 }
+/* sets up the tic-tac-toe board itself */
 
 .spot {
-  /* border: 1px solid black; */
   background-color: white;
   font-size: 6rem;
   display: flex;
   align-items: center;
   justify-content: center;
 }
+/* sets up the spots of the board, and makes sure the symbols will be correctly aligned in them */
 
 .hidden,
 .hidden * {
   display: none;
 }
+/* allows us to hide a section just by hiding the parent node */
 
-.info {
+.form {
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 10px;
 }
+/* formats the form where player information is entered */
 
 .names {
   display: flex;
@@ -48,8 +53,10 @@ body {
   align-items: center;
   gap: 10px;
 }
+/* formats the name entry spots within the form */
 
 button {
   flex: 0;
   width: 100px;
 }
+/* makes the button look nice and not grow */
